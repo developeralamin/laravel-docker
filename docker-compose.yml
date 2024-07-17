@@ -1,0 +1,23 @@
+services:
+  laravel-docker-artof:
+    container_name: laravel-docker-artof
+    build: .
+    volumes:
+      - ./laravel-app:/var/www/html
+    ports:
+      - 9003:80
+
+  mysql_database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel_docker
+    ports:
+      - 3304:3306
+
+  phpmyadmindash:
+    image: phpmyadmin:latest
+    ports:
+      - 9021:80
+    environment:
+      - PMA_ARBITRARY=1
